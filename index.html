@@ -1,0 +1,203 @@
+<html>
+  <head>
+    <title>adithya.zip</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+      * {
+        font-size: 16px;
+        font-family: "Times New Roman", Times, serif;
+      }
+      div {
+        width: 250px;
+      }
+      body {
+        display: flex;
+        padding: 20px;
+        width: 80%;
+        justify-content: space-between;
+      }
+
+      #a {
+        width: 150px;
+      }
+
+      #c img {
+        height: 30px;
+      }
+
+      #c div {
+        margin-bottom: 20px;
+        cursor: pointer;
+      }
+
+      #c div:hover,
+      #a span:hover {
+        background-color: #dfdfdf;
+      }
+
+      span a,
+      #c a {
+        text-decoration: none;
+        color: inherit;
+      }
+      #blogDiv {
+        position: absolute;
+        z-index: 9;
+        cursor: move;
+        outline: 1px solid #000;
+        text-align: center;
+        background-color: #fff;
+        width: auto;
+      }
+      #blogHeader {
+        cursor: move;
+        outline: 1px solid #000;
+        height: 20px;
+        width: 60%;
+      }
+      @media only screen and (max-width: 1000px) {
+        body {
+          display: flex;
+          flex-direction: column;
+          gap: 40px;
+          -webkit-text-size-adjust: 100%;
+        }
+        #b,
+        #c {
+          margin-top: 100px;
+        }
+        #a,
+        #b,
+        #c {
+          width: 80%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="a">
+      > dev + design <
+      <br /><br />
+      <span
+        >{
+        <a href="https://github.com/adithyasource" target="_blank">github</a>
+        }</span
+      >
+
+      <br />
+      <span
+        >{ <a href="https://are.na/adithya" target="_blank">are.na</a> }</span
+      >
+      <br />
+      <span>{ <a href="" onclick="copyEmail(event)">me@adithya.zip</a> }</span>
+      <br />
+      <span
+        >{
+        <a href="" onclick="viewBlog(event)">
+          <span id="blogViewTrigger">blog</span></a
+        >
+        }</span
+      >
+      <div id="aBlog" style="margin-top: 30px"></div>
+    </div>
+    <div id="b">
+      i am from india and 17 years old. i aspire to get into a good computer
+      science program program in my country and spend the next 4 years hustling
+      to improve and find more things that i’m passionate about
+    </div>
+    <div id="c">
+      archive ---
+      <br /><br />
+
+      <a href="https://moment.adithya.zip/" target="_blank">
+        <div id="moment">
+          <img src="/images/moment.svg" alt="" /> <br />
+          micro blogging (.txt) platform built for the terminal
+        </div>
+      </a>
+
+      <a href="https://neutral.adithya.zip" target="_blank">
+        <div id="neutral">
+          <img src="images/neutral.svg" alt="" /><br />
+          brutally minimalistic todo app
+        </div>
+      </a>
+      <a href="https://newtab.adithya.zip" target="_blank">
+        <div id="newtab">
+          <img src="images/newtab.svg" alt="" /> <br />
+          an aesthetic browser extension for taking down notes
+        </div>
+      </a>
+      <!-- <img
+        src="https://app.piratepx.com/ship?p=b8707af5-c3dd-4d34-9d1e-b8c36d2d7c79"
+      /> -->
+    </div>
+    <script>
+      let blogOpened = false;
+      async function copyEmail(event) {
+        event.preventDefault();
+        await navigator.clipboard.writeText("me@adithya.zip");
+        alert("email copied");
+      }
+      function viewBlog(event) {
+        event.preventDefault();
+        if (blogOpened == false) {
+          blogOpened = true;
+          document.getElementById(
+            "blogViewTrigger"
+          ).innerHTML = `<span id="blogViewTrigger"><s>blog</s></span>`;
+          const blogDiv = document.createElement("blogDiv");
+          blogDiv.innerHTML = `
+      <div id="blogDiv">
+      <div style="display: flex; justify-content: space-between; width: 100%;">
+        <div id="blogHeader">blog.html</div>
+        <a href="/blog.html" style="margin-right:15px">view full page</a>
+      </div>
+      <iframe src="/blog.html" frameborder="0"></iframe>
+      </div>
+      `;
+          document.getElementById("aBlog").appendChild(blogDiv);
+          var pos1 = 0,
+            pos2 = 0,
+            pos3 = 0,
+            pos4 = 0;
+          if (document.getElementById(blogHeader)) {
+            document.getElementById(blogHeader).onmousedown = dragMouseDown;
+          } else {
+            document.getElementById("blogDiv").onmousedown = dragMouseDown;
+          }
+          function dragMouseDown(e) {
+            e = e || window.event;
+            e.preventDefault();
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+            document.onmousemove = elementDrag;
+          }
+          function elementDrag(e) {
+            e = e || window.event;
+            e.preventDefault();
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.getElementById("blogDiv").style.top =
+              document.getElementById("blogDiv").offsetTop - pos2 + "px";
+            document.getElementById("blogDiv").style.left =
+              document.getElementById("blogDiv").offsetLeft - pos1 + "px";
+          }
+          function closeDragElement() {
+            document.onmouseup = null;
+            document.onmousemove = null;
+          }
+        } else {
+          blogOpened = false;
+          blogDiv.remove();
+          document.getElementById(
+            "blogViewTrigger"
+          ).innerHTML = `<span id="blogViewTrigger">blog</span>`;
+        }
+      }
+    </script>
+  </body>
+</html>
