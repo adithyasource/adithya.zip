@@ -16,25 +16,20 @@
         width: 80%;
         justify-content: space-between;
       }
-
       #a {
         width: 150px;
       }
-
       #c img {
-        height: 30px;
+        height: 25px;
       }
-
       #c div {
-        margin-bottom: 20px;
+        margin-bottom: 15px;
         cursor: pointer;
       }
-
       #c div:hover,
       #a span:hover {
         background-color: #dfdfdf;
       }
-
       span a,
       #c a {
         text-decoration: none;
@@ -55,6 +50,9 @@
         height: 20px;
         width: 60%;
       }
+      #c img {
+        filter: invert(1);
+      }
       @media only screen and (max-width: 1000px) {
         body {
           display: flex;
@@ -72,50 +70,70 @@
           width: 80%;
         }
       }
+      @media (prefers-color-scheme: dark) {
+        * {
+          background-color: #000;
+          color: #fff;
+        }
+        #c img {
+          filter: none;
+          mix-blend-mode: screen;
+        }
+
+        #c div:hover,
+        #a span:hover {
+          background-color: #333;
+        }
+        #blogDiv,
+        #blogHeader {
+          outline: 1px solid #fff;
+        }
+      }
     </style>
   </head>
   <body>
     <div id="a">
-      > dev + design <
+      dev + design
       <br /><br />
-      <span
-        >{
-        <a href="https://github.com/adithyasource" target="_blank">github</a>
-        }</span
-      >
-
-      <br />
-      <span
-        >{ <a href="https://are.na/adithya" target="_blank">are.na</a> }</span
-      >
-      <br />
-      <span>{ <a href="" onclick="copyEmail(event)">me@adithya.zip</a> }</span>
-      <br />
-      <span
-        >{
-        <a href="" onclick="viewBlog(event)">
-          <span id="blogViewTrigger">blog</span></a
+      <span>
+        <a href="https://github.com/adithyasource" target="_blank"
+          ><span>{ github }</span></a
         >
-        }</span
+      </span>
+      <br />
+      <span
+        ><a href="https://are.na/adithya" target="_blank"
+          ><span>{ are.na }</span></a
+        ></span
       >
+      <br />
+      <span>
+        <a href="" onclick="copyEmail(event)"
+          ><span>{ me@adithya.zip }</span></a
+        >
+      </span>
+      <br />
+      <span>
+        <a href="" onclick="viewBlog(event)">
+          <span id="blogViewTrigger">{ blog }</span>
+        </a>
+      </span>
       <div id="aBlog" style="margin-top: 30px"></div>
     </div>
     <div id="b">
       i am from india and 17 years old. i aspire to get into a good computer
-      science program program in my country and spend the next 4 years hustling
-      to improve and find more things that i’m passionate about
+      science program in my country and spend the next 4 years hustling to
+      improve and find more things that i’m passionate about
     </div>
     <div id="c">
       archive ---
       <br /><br />
-
       <a href="https://moment.adithya.zip/" target="_blank">
         <div id="moment">
           <img src="/images/moment.svg" alt="" /> <br />
           micro blogging (.txt) platform built for the terminal
         </div>
       </a>
-
       <a href="https://neutral.adithya.zip" target="_blank">
         <div id="neutral">
           <img src="images/neutral.svg" alt="" /><br />
@@ -128,9 +146,9 @@
           an aesthetic browser extension for taking down notes
         </div>
       </a>
-      <img
+      <!-- <img
         src="https://app.piratepx.com/ship?p=b8707af5-c3dd-4d34-9d1e-b8c36d2d7c79"
-      />
+      /> -->
     </div>
     <script>
       let blogOpened = false;
@@ -141,21 +159,22 @@
       }
       function viewBlog(event) {
         event.preventDefault();
-        if (blogOpened == false) {
+        blogOpened = !blogOpened;
+        if (blogOpened == true) {
           blogOpened = true;
           document.getElementById(
             "blogViewTrigger"
-          ).innerHTML = `<span id="blogViewTrigger"><s>blog</s></span>`;
+          ).innerHTML = `<span id="blogViewTrigger">{ <s>blog</s> }</span>`;
           const blogDiv = document.createElement("blogDiv");
           blogDiv.innerHTML = `
-      <div id="blogDiv">
-      <div style="display: flex; justify-content: space-between; width: 100%;">
-        <div id="blogHeader">blog.html</div>
-        <a href="/blog.html" style="margin-right:15px">view full page</a>
-      </div>
-      <iframe src="/blog.html" frameborder="0"></iframe>
-      </div>
-      `;
+            <div id="blogDiv">
+            <div style="display: flex; justify-content: space-between; width: 100%;">
+              <div id="blogHeader">blog.html</div>
+              <a href="/blog.html" style="margin-right:15px">view full page</a>
+            </div>
+            <iframe src="/blog.html" frameborder="0"></iframe>
+            </div>
+            `;
           document.getElementById("aBlog").appendChild(blogDiv);
           var pos1 = 0,
             pos2 = 0,
@@ -190,12 +209,38 @@
             document.onmouseup = null;
             document.onmousemove = null;
           }
+          function blogOpenWindowHandler(width) {
+            if (width <= 1000) {
+              document.getElementById("b").style.marginTop = "300px";
+            } else {
+              document.getElementById("b").style.marginTop = "0px";
+            }
+          }
+          blogOpenWindowHandler(window.innerWidth);
+          window.addEventListener(
+            "resize",
+            function (event) {
+              blogOpenWindowHandler(event["target"]["innerWidth"]);
+            },
+            true
+          );
         } else {
-          blogOpened = false;
           blogDiv.remove();
           document.getElementById(
             "blogViewTrigger"
-          ).innerHTML = `<span id="blogViewTrigger">blog</span>`;
+          ).innerHTML = `<span id="blogViewTrigger">{ blog }</span>`;
+          function blogCloseWindowHandler(width) {
+            if (width <= 1000) {
+              document.getElementById("b").style.marginTop = "100px";
+            } else {
+              document.getElementById("b").style.marginTop = "0px";
+            }
+          }
+          blogCloseWindowHandler(window.innerWidth);
+          window.addEventListener("resize", function (event) {
+            blogCloseWindowHandler(event["target"]["innerWidth"]);
+            true;
+          });
         }
       }
     </script>
