@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+
+
+<channel>
+  <title>text blog by adithya</title>
+  <link>https://adithya.zip</link>
+
+
+  <item>
+    <title>analytics tools for the minimal web</title>
+    <pubDate>2023-08-08</pubDate>
+    <link>https://adithya.zip/blogs/analytics-tools-for-the-minimal-web</link>
+    <description>
+    <p>
+      so for my most recent design and development projects, i have been using
+      two tools that i have come to deeply adore:
+      <a href="https://www.piratepx.com/" target="_blank">piratepx</a> and
+      <a href="https://counter.dev/" target="_blank">counter.dev</a> </p> <p>
+      these two tools, for me (with very small and simple projects to put out)
+      at least, these analytics tracking tools are perfect. they do not use much
+      of the users bandwidth or compute time trying to download a bunch of
+      tracking javascript or adding cookies to the browser. </p> <p>
+      due to both being highly privacy focused, they dont have the need to
+      create cookies, fingerprint ip addresses, log extensive user data, etc.
+      counter.dev costs the user about 730 bytes whereas piratepx asks for only
+      37 bytes.
+      </p> <p>
+      piratepx can be sooo lightweight since it only ships a 1x1 pixel .gif file
+      to the user which then counts as a pageview. counter.dev provides a bit
+      more insight about the user's device, country, traffic source, etc while
+      still having the same privacy features.
+      </p> <p>
+      honestly love both of them and i've used pirate px for
+      <a href="https://adithya.zip" target="_blank">adithya.zip</a> for a long
+      time as then i would only need to see a count of the people visiting the
+      website and didnt need any unneeded info such as the devices, country,
+      sources, etc of the visitors. however now i use counter.dev for this since
+      adding the blog so that i can see from where people find my webpage from
+      so that i can try to increase traffic. for my other products however,
+      <a href="https://moment.adithya.zip" target="_blank">moment</a>,
+      <a href="https://neutral.adithya.zip" target="_blank">neutral</a> and
+      <a href="https://newtab.adithya.zip" target="_blank">newtab</a>, i have
+      always used counter.dev, as i need a bit more insight on where my users
+      are coming from and how they access the website / product. honestly these
+      two are the best tools to use if you dont want to use google analytics or
+      dont want to pay for
+      <a href="https://plausible.io/" target="">plausible</a> analytics.
+      </p>
+    </description>
+    <category>www</category>
+  </item>
+
+</channel>
+
+</rss>

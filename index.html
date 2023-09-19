@@ -4,8 +4,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <style>
       * {
-        font-size: 16px;
-        font-family: "Times New Roman", Times, serif;
+        font-size: 1rem;
       }
       div {
         width: 250px;
@@ -19,18 +18,19 @@
       #a {
         width: 150px;
       }
-      #c img {
-        height: 25px;
-      }
+
       #c div {
         margin-bottom: 15px;
         cursor: pointer;
       }
       #c div:hover,
-      #a span:hover {
+      #a span:hover,
+      #b a:hover {
         background-color: #dfdfdf;
       }
+
       span a,
+      #b a,
       #c a {
         text-decoration: none;
         color: inherit;
@@ -49,7 +49,7 @@
         cursor: move;
         outline: 1px solid #000;
         height: 20px;
-        width: 60%;
+        width: 100%;
       }
       iframe {
         width: 400px;
@@ -82,31 +82,6 @@
           width: 80%;
         }
       }
-      @media (prefers-color-scheme: dark) {
-        * {
-          background-color: #000;
-          color: #fff;
-        }
-        .projectLogo {
-          filter: none;
-          mix-blend-mode: screen;
-        }
-
-        #c div:hover,
-        #a span:hover {
-          background-color: #333;
-        }
-        #blogDiv,
-        #blogHeader {
-          outline: 1px solid #fff;
-        }
-        a:visited {
-          color: rgb(140, 91, 255);
-        }
-        a:link {
-          color: #6948ff;
-        }
-      }
     </style>
     <script
       src="https://cdn.counter.dev/script.js"
@@ -120,27 +95,26 @@
       <br /><br />
       <span>
         <a href="https://github.com/adithyasource" target="_blank"
-          ><span>{ github }</span></a
+          ><span> github </span></a
         >
       </span>
       <br />
       <span
         ><a href="https://are.na/adithya" target="_blank"
-          ><span>{ are.na }</span></a
+          ><span> are.na </span></a
         ></span
       >
       <br />
       <span>
-        <a href="" onclick="copyEmail(event)"
-          ><span>{ me@adithya.zip }</span></a
-        >
+        <a href="" onclick="copyEmail(event)"><span> me@adithya.zip </span></a>
       </span>
       <br />
       <span>
         <a href="" onclick="viewBlog(event)">
-          <span id="blogViewTrigger">{ blog }</span>
+          <span id="blogViewTrigger"> blog </span>
         </a>
       </span>
+
       <div id="aBlog" style="margin-top: 30px"></div>
       <div id="badgesBottom"></div>
     </div>
@@ -150,28 +124,44 @@
       improve and find more things that i’m passionate about
     </div>
     <div id="c">
-      archive ---
+      archive
       <br /><br />
       <a href="https://moment.adithya.zip/" target="_blank">
         <div id="moment">
-          <img src="/images/moment.svg" alt="" class="projectLogo" /> <br />
+          <i>moment</i>
+          <br />
           micro blogging (.txt) platform built for the terminal
         </div>
       </a>
       <a href="https://neutral.adithya.zip" target="_blank">
         <div id="neutral">
-          <img src="images/neutral.svg" alt="" class="projectLogo" /><br />
+          <i>neutral</i>
+          <br />
           brutally minimalistic todo app
         </div>
       </a>
       <a href="https://newtab.adithya.zip" target="_blank">
         <div id="newtab">
-          <img src="images/newtab.svg" alt="" class="projectLogo" /> <br />
+          <i>newtab</i>
+          <br />
           an aesthetic browser extension for taking down notes
         </div>
       </a>
     </div>
     <script>
+      let fonts = ["sans-serif", "serif", "monospace"];
+      let randomIndex = Math.floor(Math.random() * fonts.length);
+
+      document.querySelector("*").style.fontFamily = fonts[randomIndex];
+
+      if (fonts[randomIndex] == "monospace") {
+        document.querySelector("*").style.fontSize = "0.8rem";
+      }
+
+      if (fonts[randomIndex] == "sans-serif") {
+        document.querySelector("*").style.fontSize = "0.9rem";
+      }
+
       let blogOpened = false;
       async function copyEmail(event) {
         event.preventDefault();
@@ -185,15 +175,12 @@
           blogOpened = true;
           document.getElementById(
             "blogViewTrigger"
-          ).innerHTML = `<span id="blogViewTrigger">{ <s>blog</s> }</span>`;
+          ).innerHTML = `<span id="blogViewTrigger"> <s>blog</s> </span>`;
           const blogDiv = document.createElement("blogDiv");
           blogDiv.innerHTML = `
             <div id="blogDiv">
-            <div style="display: flex; justify-content: space-between; width: 100%;">
               <div id="blogHeader">blog.html</div>
-              <a href="/blog.html" style="margin-right:35px">view full page</a>
-            </div>
-            <iframe src="/blog.html" frameborder="0"></iframe>
+            <iframe src="blog.html" frameborder="0"></iframe>
             </div>
             `;
           document.getElementById("aBlog").appendChild(blogDiv);
@@ -249,7 +236,7 @@
           blogDiv.remove();
           document.getElementById(
             "blogViewTrigger"
-          ).innerHTML = `<span id="blogViewTrigger">{ blog }</span>`;
+          ).innerHTML = `<span id="blogViewTrigger"> blog </span>`;
           function blogCloseWindowHandler(width) {
             if (width <= 1000) {
               document.getElementById("b").style.marginTop = "100px";
