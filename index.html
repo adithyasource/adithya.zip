@@ -17,6 +17,9 @@
       }
       #a {
         width: 150px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
       }
 
       #c div {
@@ -24,33 +27,22 @@
         cursor: pointer;
       }
       #c div:hover,
-      #a span:hover,
+      #a a:hover,
       #b a:hover {
         background-color: #dfdfdf;
       }
 
-      span a,
+      .contextBoxes {
+        opacity: 0.6;
+      }
+
+      a,
       #b a,
       #c a {
         text-decoration: none;
         color: inherit;
       }
-      #blogDiv {
-        position: absolute;
-        z-index: 9;
-        cursor: move;
-        outline: 1px solid #000;
-        text-align: center;
-        background-color: #fff;
-        width: 400px;
-        height: 500px;
-      }
-      #blogHeader {
-        cursor: move;
-        outline: 1px solid #000;
-        height: 20px;
-        width: 100%;
-      }
+
       iframe {
         width: 400px;
         height: 470px;
@@ -93,30 +85,24 @@
     <div id="a">
       dev + design
       <br /><br />
-      <span>
-        <a href="https://github.com/adithyasource" target="_blank"
-          ><span> github </span></a
-        >
-      </span>
-      <br />
-      <span
-        ><a href="https://are.na/adithya" target="_blank"
-          ><span> are.na </span></a
-        ></span
+      <a href="https://x.com/adithyasrc" target="_blank"
+        ><span>twitter</span></a
+      >
+
+      <a href="https://github.com/adithyasource" target="_blank"
+        >github <span class="contextBoxes">[dev]</span></a
+      >
+
+      <a href="https://layers.to/adithyasource" target="_blank"
+        >layers <span class="contextBoxes">[design]</span></a
+      >
+
+      <a href="https://are.na/adithya" target="_blank"
+        >are.na <span class="contextBoxes">[inspo]</span></a
       >
       <br />
-      <span>
-        <a href="" onclick="copyEmail(event)"><span> me@adithya.zip </span></a>
-      </span>
-      <br />
-      <span>
-        <a href="" onclick="viewBlog(event)">
-          <span id="blogViewTrigger"> blog </span>
-        </a>
-      </span>
 
-      <div id="aBlog" style="margin-top: 30px"></div>
-      <div id="badgesBottom"></div>
+      <a href="" onclick="copyEmail(event)"><span> me@adithya.zip </span></a>
     </div>
     <div id="b">
       i am from india and 17 years old. i aspire to get into a good computer
@@ -124,8 +110,6 @@
       improve and find more things that i’m passionate about
     </div>
     <div id="c">
-      archive
-      <br /><br />
       <a href="https://moment.adithya.zip/" target="_blank">
         <div id="moment">
           <i>moment</i>
@@ -162,94 +146,10 @@
         document.querySelector("*").style.fontSize = "0.9rem";
       }
 
-      let blogOpened = false;
       async function copyEmail(event) {
         event.preventDefault();
         await navigator.clipboard.writeText("me@adithya.zip");
         alert("email copied");
-      }
-      function viewBlog(event) {
-        event.preventDefault();
-        blogOpened = !blogOpened;
-        if (blogOpened == true) {
-          blogOpened = true;
-          document.getElementById(
-            "blogViewTrigger"
-          ).innerHTML = `<span id="blogViewTrigger"> <s>blog</s> </span>`;
-          const blogDiv = document.createElement("blogDiv");
-          blogDiv.innerHTML = `
-            <div id="blogDiv">
-              <div id="blogHeader">blog.html</div>
-            <iframe src="blog.html" frameborder="0"></iframe>
-            </div>
-            `;
-          document.getElementById("aBlog").appendChild(blogDiv);
-          var pos1 = 0,
-            pos2 = 0,
-            pos3 = 0,
-            pos4 = 0;
-          if (document.getElementById(blogHeader)) {
-            document.getElementById(blogHeader).onmousedown = dragMouseDown;
-          } else {
-            document.getElementById("blogDiv").onmousedown = dragMouseDown;
-          }
-          function dragMouseDown(e) {
-            e = e || window.event;
-            e.preventDefault();
-            pos3 = e.clientX;
-            pos4 = e.clientY;
-            document.onmouseup = closeDragElement;
-            document.onmousemove = elementDrag;
-          }
-          function elementDrag(e) {
-            e = e || window.event;
-            e.preventDefault();
-            pos1 = pos3 - e.clientX;
-            pos2 = pos4 - e.clientY;
-            pos3 = e.clientX;
-            pos4 = e.clientY;
-            document.getElementById("blogDiv").style.top =
-              document.getElementById("blogDiv").offsetTop - pos2 + "px";
-            document.getElementById("blogDiv").style.left =
-              document.getElementById("blogDiv").offsetLeft - pos1 + "px";
-          }
-          function closeDragElement() {
-            document.onmouseup = null;
-            document.onmousemove = null;
-          }
-          function blogOpenWindowHandler(width) {
-            if (width <= 1000) {
-              document.getElementById("b").style.marginTop = "550px";
-            } else {
-              document.getElementById("b").style.marginTop = "0px";
-            }
-          }
-          blogOpenWindowHandler(window.innerWidth);
-          window.addEventListener(
-            "resize",
-            function (event) {
-              blogOpenWindowHandler(event["target"]["innerWidth"]);
-            },
-            true
-          );
-        } else {
-          blogDiv.remove();
-          document.getElementById(
-            "blogViewTrigger"
-          ).innerHTML = `<span id="blogViewTrigger"> blog </span>`;
-          function blogCloseWindowHandler(width) {
-            if (width <= 1000) {
-              document.getElementById("b").style.marginTop = "100px";
-            } else {
-              document.getElementById("b").style.marginTop = "0px";
-            }
-          }
-          blogCloseWindowHandler(window.innerWidth);
-          window.addEventListener("resize", function (event) {
-            blogCloseWindowHandler(event["target"]["innerWidth"]);
-            true;
-          });
-        }
       }
     </script>
   </body>

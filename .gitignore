@@ -6,3 +6,4 @@
 # i dont want the blogs folder to get commited just in case that i want
 # to delete something permanently
 /backups/
+*.zip
