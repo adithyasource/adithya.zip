@@ -5,6 +5,7 @@
     <style>
       * {
         font-size: 1rem;
+        font-family: Helvetica, Arial, sans-serif;
       }
       div {
         width: 250px;
@@ -23,13 +24,14 @@
       }
 
       #c div {
-        margin-bottom: 15px;
         cursor: pointer;
+        margin-bottom: 15px;
       }
+
       #c div:hover,
       #a a:hover,
       #b a:hover {
-        background-color: #dfdfdf;
+        background-color: #eeeeee;
       }
 
       .contextBoxes {
@@ -41,6 +43,13 @@
       #c a {
         text-decoration: none;
         color: inherit;
+      }
+
+      #a a,
+      #b a,
+      .projectDiv {
+        padding: 4px;
+        border-radius: 6px;
       }
 
       iframe {
@@ -99,37 +108,38 @@
       <a href="" onclick="copyEmail(event)"><span> me@adithya.zip </span></a>
     </div>
     <div id="b">
-      hey there! im adithya and currently i'm learning web technologies. <br /><br />
-      all software built by me is open source on github and is dedicated to the
-      public domain
+      hey there! im adithya and currently i'm learning web technologies.
+      <br /><br />
+      all software built by me is open source and is dedicated to the public
+      domain
       <a href="https://konceptosociala.eu.org/unlicense/" target="_blank"
         >[unlicense]</a
       >
     </div>
     <div id="c">
       <a href="https://clear.adithya.zip/" target="_blank">
-        <div id="moment">
+        <div id="clear" class="projectDiv">
           <i>clear</i>
           <br />
           simple and lightweight game launcher
         </div>
       </a>
       <a href="https://neutral.adithya.zip" target="_blank">
-        <div id="neutral">
+        <div id="neutral" class="projectDiv">
           <i>neutral</i>
           <br />
           brutally minimalistic todo app
         </div>
       </a>
       <a href="https://moment.adithya.zip/" target="_blank">
-        <div id="moment">
+        <div id="moment" class="projectDiv">
           <i>moment</i>
           <br />
           micro blogging (.txt) platform built for the terminal
         </div>
       </a>
       <a href="https://newtab.adithya.zip" target="_blank">
-        <div id="newtab">
+        <div id="newtab" class="projectDiv">
           <i>newtab</i>
           <br />
           an aesthetic browser extension for taking down notes
@@ -137,19 +147,6 @@
       </a>
     </div>
     <script>
-      let fonts = ["sans-serif", "serif", "monospace"];
-      let randomIndex = Math.floor(Math.random() * fonts.length);
-
-      document.querySelector("*").style.fontFamily = fonts[randomIndex];
-
-      if (fonts[randomIndex] == "monospace") {
-        document.querySelector("*").style.fontSize = "0.8rem";
-      }
-
-      if (fonts[randomIndex] == "sans-serif") {
-        document.querySelector("*").style.fontSize = "0.9rem";
-      }
-
       async function copyEmail(event) {
         event.preventDefault();
         await navigator.clipboard.writeText("me@adithya.zip");
