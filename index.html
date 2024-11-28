@@ -10,7 +10,7 @@
     }
 
     body {
-      width: 20%;
+      width: 300px;
       margin: 20px auto;
     }
 
@@ -31,12 +31,9 @@
       opacity: 50%
     }
 
-    @media only screen and (max-width: 1000px) {
+    @media only screen and (max-width: 450px) {
       body {
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
-        -webkit-text-size-adjust: 100%;
+        width: calc(100% - 60px);
       }
     }
   </style>
