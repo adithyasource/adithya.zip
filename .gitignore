@@ -7,3 +7,4 @@
 # to delete something permanently
 /backups/
 *.zip
+.DS_Store
