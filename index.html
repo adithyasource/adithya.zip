@@ -39,11 +39,21 @@
     li::after {
       background-color: #f2f2f2 !important;
     }
+
+    @media only screen and (max-width: 450px) {
+      body {
+        width: calc(100% - 60px);
+      }
+
+      * {
+        font-size: 14px !important;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <div class="window" style="width: 400px">
+  <div class="window">
     <div class="title-bar">
       <div class="title-bar-text">adithya.zip</div>
       <div class="title-bar-controls">
@@ -61,7 +71,6 @@
             </button>
             <br />
             <p>simple and lightweight game launcher</p>
-
           </li>
 
           <li>
@@ -88,7 +97,6 @@
             <p>micro blogging platform for the terminal</p>
           </li>
         </ul>
-        </li>
       </ul>
 
       <div class="status-bar">
