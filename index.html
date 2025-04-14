@@ -3,102 +3,72 @@
 <head>
   <title>adithya.zip</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link rel="stylesheet" href="https://unpkg.com/98.css">
-  <script src="https://cdn.counter.dev/script.js" data-id="2b931ae8-ba3b-4013-afd8-c76e86e69d6f"
-    data-utcoffset="6"></script>
   <style>
+    * {
+      font-size: 1rem;
+      font-family: Helvetica, Arial, sans-serif;
+    }
+
     body {
-      width: 400px;
+      width: 300px;
       margin: 100px auto;
     }
 
     a {
+      text-decoration: none;
       color: inherit;
-      margin-right: 0.6rem;
-      margin-top: 0.3rem;
+      display: block;
+      padding: 4px;
+      border-radius: 6px;
+      margin-bottom: 10px;
     }
 
-    * {
-      font-size: 16px !important;
+    a:hover {
+      background-color: #f4f4f4;
+      outline: 1px solid #dcdcdc;
     }
 
-    button {
-      padding: 0.3rem !important;
-      cursor: pointer;
-    }
-
-    p {
-      margin-top: 6px;
-      margin-bottom: 6px;
-    }
-
-    .tree-view {
-      background-color: #f2f2f2 !important;
-    }
-
-    li::after {
-      background-color: #f2f2f2 !important;
+    @media only screen and (max-width: 450px) {
+      body {
+        width: calc(100% - 60px);
+      }
     }
   </style>
+  <script src="https://cdn.counter.dev/script.js" data-id="2b931ae8-ba3b-4013-afd8-c76e86e69d6f"
+    data-utcoffset="6"></script>
 </head>
 
 <body>
-  <div class="window" style="width: 400px">
-    <div class="title-bar">
-      <div class="title-bar-text">adithya.zip</div>
-      <div class="title-bar-controls">
-        <button aria-label="Minimize"></button>
-        <button aria-label="Maximize"></button>
-        <button aria-label="Close"></button>
-      </div>
-    </div>
-    <div class="window-body">
-      <ul class="tree-view">
-        <ul>
-          <li>
-            <button onclick="window.open('https://clear.adithya.zip/', '_blank')">
-              clear
-            </button>
-            <br />
-            <p>simple and lightweight game launcher</p>
-
-          </li>
-
-          <li>
-            <button onclick="window.open('https://newtab.adithya.zip/', '_blank')">
-              newtab
-            </button>
-            <br />
-            <p>an aesthetic browser extension for taking down notes</p>
-          </li>
-
-          <li>
-            <button onclick="window.open('https://neutral.adithya.zip/', '_blank')">
-              neutral
-            </button>
-            <br />
-            <p>brutally minimalistic todo app</p>
-          </li>
-
-          <li>
-            <button onclick="window.open('https://moment.adithya.zip/', '_blank')">
-              moment
-            </button>
-            <br />
-            <p>micro blogging platform for the terminal</p>
-          </li>
-        </ul>
-        </li>
-      </ul>
-
-      <div class="status-bar">
-        <a href="https://x.com/adithyasrc" target="_blank">twitter</a>
-        <a href="https://github.com/adithyasource" target="_blank">github</a>
-        <a href="" onclick="copyEmail(event)">me@adithya.zip</a>
-      </div>
-    </div>
+  <div id="social-links">
+    <a href="https://x.com/adithyasrc" target="_blank">twitter</a>
+    <a href="https://github.com/adithyasource" target="_blank">github</a>
+    <a href="" onclick="copyEmail(event)">me@adithya.zip</a>
   </div>
-
+  <br>
+  <br>
+  <br>
+  <div>
+    <a href="https://clear.adithya.zip/" target="_blank">
+      <i>clear</i>
+      <br />
+      simple and lightweight game launcher
+    </a>
+    <a href="https://neutral.adithya.zip" target="_blank">
+      <i>neutral</i>
+      <br />
+      brutally minimalistic todo app
+    </a>
+    <a href="https://moment.adithya.zip/" target="_blank">
+      <i>moment</i>
+      <br />
+      micro blogging (.txt) platform built for the terminal
+    </a>
+    <a href="https://newtab.adithya.zip" target="_blank">
+      <i>newtab</i>
+      <br />
+      an aesthetic browser extension for taking down notes
+    </a>
+  </div>
   <script>
     async function copyEmail(event) {
       event.preventDefault();
