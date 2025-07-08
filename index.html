@@ -7,11 +7,13 @@
     * {
       font-size: 1rem;
       font-family: Helvetica, Arial, sans-serif;
+      text-align: right;
     }
 
+
     body {
-      width: 300px;
-      margin: 50px;
+      width: 500px;
+      margin: 100px auto;
     }
 
     a {
@@ -21,6 +23,22 @@
       padding: 4px;
       border-radius: 6px;
       margin-bottom: 10px;
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    #social-links {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    #social-links a {
+      width: max-content;
+    }
+
+    i {
+      width: 75%;
     }
 
     a:hover {
@@ -28,10 +46,23 @@
       outline: 1px solid #dcdcdc;
     }
 
-    @media only screen and (max-width: 450px) {
+    @media only screen and (max-width: 600px) {
       body {
         width: calc(100% - 60px);
         margin: 50px auto;
+      }
+
+      #social-links {
+        flex-direction: column;
+      }
+
+      a {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      * {
+        text-align: left;
       }
     }
   </style>
@@ -46,26 +77,21 @@
   </div>
   <br>
   <br>
-  <br>
   <div>
     <a href="https://clear.adithya.zip/" target="_blank">
       clear
-      <br />
       <i>simple and lightweight game library</i>
     </a>
-    <a href="https://github.com/adithyasource/rip" target="_blank">
-      rip
-      <br />
-      <i>spotify to folder ripper</i>
+    <a href="https://github.com/adithyasource/static" target="_blank">
+      static
+      <i>a local copy of your spotify, statically stored</i>
     </a>
     <a href="https://github.com/adithyasource/fm" target="_blank">
       fm
-      <br />
       <i>better fog resource pack for minecraft</i>
     </a>
     <a href="https://newtab.adithya.zip" target="_blank">
       newtab
-      <br />
       <i>a boring browser extension for taking down notes</i>
     </a>
   </div>
