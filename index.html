@@ -1,15 +1,13 @@
-<html>
-
-<head>
-  <title>adithya.zip</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <style>
+<html lang="en">
+  <head>
+    <title>adithya.zip</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
     * {
       font-size: 1rem;
       font-family: Helvetica, Arial, sans-serif;
       text-align: right;
     }
-
 
     body {
       width: 500px;
@@ -19,11 +17,10 @@
     a {
       text-decoration: none;
       color: inherit;
-      display: block;
+      display: flex;
       padding: 4px;
       border-radius: 6px;
       margin-bottom: 10px;
-      display: flex;
       width: 100%;
       justify-content: space-between;
     }
@@ -50,6 +47,10 @@
       opacity: 50%;
     }
 
+    #secondary-div {
+      opacity: 50%;
+    }
+
     @media only screen and (max-width: 600px) {
       body {
         width: calc(100% - 60px);
@@ -69,47 +70,58 @@
         text-align: left;
       }
     }
-  </style>
-  <script src="https://akagi.adithya.zip/script.js" akagi-id="4ritsj5m72daf2r7v434zsv7xiky5kpn" defer></script>
-</head>
+    </style>
+    <script src="https://akagi.adithya.zip/script.js" akagi-id="4ritsj5m72daf2r7v434zsv7xiky5kpn" defer></script>
+  </head>
 
-<body>
-  <div id="social-links">
-    <a href="https://x.com/adithyasrc" target="_blank">x.com</a>
-    <a href="https://github.com/adithyasource" target="_blank">github</a>
-    <a href="" onclick="copyEmail(event)">me@adithya.zip</a>
-  </div>
-  <br>
-  <br>
-  <div>
-    <a id="akagi" href="">
-      akagi
-      <i>(coming soon) lightweight web analytics</i>
-    </a>
-    <a href="https://clear.adithya.zip/" target="_blank">
-      clear
-      <i>simple and lightweight game library</i>
-    </a>
-    <a href="https://newtab.adithya.zip" target="_blank">
-      newtab
-      <i>a boring browser extension for taking down notes</i>
-    </a>
-    <a href="https://github.com/adithyasource/static" target="_blank">
-      static
-      <i>a local copy of your spotify, statically stored</i>
-    </a>
-    <a href="https://modrinth.com/resourcepack/fm-fog-machine" target="_blank">
-      fm
-      <i>better fog resource pack for minecraft</i>
-    </a>
-  </div>
-  <script>
+  <body>
+    <div id="social-links">
+      <a href="https://x.com/adithyasrc" target="_blank">x.com</a>
+      <a href="https://github.com/adithyasource" target="_blank">github</a>
+      <a href="" onclick="copyEmail(event)">me@adithya.zip</a>
+    </div>
+    <br>
+    <br>
+    <div>
+      <a id="akagi" href="">
+        akagi
+        <i>(coming soon) lightweight web analytics</i>
+      </a>
+      <a href="https://clear.adithya.zip/" target="_blank">
+        clear
+        <i>simple and lightweight game library</i>
+      </a>
+      <a href="https://newtab.adithya.zip" target="_blank">
+        newtab
+        <i>a boring browser extension for taking down notes</i>
+      </a>
+      <a href="https://github.com/adithyasource/static" target="_blank">
+        static
+        <i>a local copy of your spotify, statically stored</i>
+      </a>
+      <a href="https://modrinth.com/resourcepack/fm-fog-machine" target="_blank">
+        fm
+        <i>better fog resource pack for minecraft</i>
+      </a>
+    </div>
+    <br>
+    <br>
+    <div id="secondary-div">
+      <a href="https://github.com/adithyasource/spearmint.nvim" target="_blank">
+        spearmint.nvim
+        <i>harpoon style marks plugin for neovim</i>
+      </a>
+      <a href="https://github.com/adithyasource/dotfiles/" target="_blank">
+        dotfiles
+        <i>configs i use for my windows desktop and macbook</i>
+      </a>
+    </div>
+    <script>
     async function copyEmail(event) {
       event.preventDefault();
       await navigator.clipboard.writeText("me@adithya.zip");
       alert("email copied");
     }
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>
